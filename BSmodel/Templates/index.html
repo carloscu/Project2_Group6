@@ -19,51 +19,24 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
         <div class="well">
-          <h5>SELECT Sample:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Sample MetaData</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div id="pie"></div>
-      </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
-      </div>
+          <h5 style= "font-size: 28px">Select Data:</h5>
+          <div> <!-- creates the dropdown with the chart options-->
+              <select style="font-size: 16px" id="selDataset" onchange="getData(this.value)"> 
+                  <option style="font-size: 16px" value="type_total">Pokemon Type and total</option>
+                  <option style="font-size: 16px" value="catchrate">Pokemon Catch Rate by Type</option>
+                  <option style="font-size: 16px" value="pokemon_generation">Pokemon Generation and total</option>
+                </select>
+          </div>        
+      </div>     
     </div>
+    <div style="margin-top: 30px" id="bar"></div> <!-- displays the charts -->
   </div>
-  <!-- <div class="row"> -->
-   <!-- <div class="col-md-12"> --> 
-      <!-- <div id="bubble"></div> -->
-   <!-- </div> -->
-  <!-- </div> -->
-
-  <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  
-
-
-    <div id="bar"></div>
-    <select id="selDataset" onchange="getData(this.value)"> 
-        <option value="type_total">Pokemon Type and total</option>
-        <option value="type_total_gen">Pokemon Type and total by Generation</option>
-        <option value="catchrate">Pokemon Catch Rate by Type</option>
-        <option value="pokemon_generation">Pokemon Generation and total</option>
-        <!-- <option value="catchbytotal">Catch Rate and total</option> -->
-
-      </select>
-
-    <script src="{{ url_for('static', filename='js/appbs.js') }}"></script>
-
+  <script src="{{ url_for('static', filename='js/appbs.js') }}"></script>
 
 </body>
 
