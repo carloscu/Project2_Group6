@@ -133,40 +133,40 @@ def type_total():
     return jsonify(trace_type)
     
 # trying to make a grouped bar chart using the generations; started by just doing regular and group1, in case it didn't work and it isn't!
-@app.route("/type_total_gen")
-def type_total_gen():
-    """Return pokemon type and pokemon by generation total"""
+# @app.route("/type_total_gen")
+# def type_total_gen():
+#     """Return pokemon type and pokemon by generation total"""
     
-    # Query for the data
-    results = db.session.query(Pokemon.type_1, func.avg(Pokemon.total)).\
-        group_by(Pokemon.type_1).all()
+#     # Query for the data
+#     results = db.session.query(Pokemon.type_1, func.avg(Pokemon.total)).\
+#         group_by(Pokemon.type_1).all()
     
-    # Create lists from the query results
-    pokemon_type = [result[0] for result in results]
-    total_score = [int(result[1]) for result in results]
+#     # Create lists from the query results
+#     pokemon_type = [result[0] for result in results]
+#     total_score = [int(result[1]) for result in results]
 
-    # Generate the plot trace
-    trace_type = {
-        "x": pokemon_type,
-        "y": total_score,
-        "type": "bar"
-    }
+#     # Generate the plot trace
+#     trace_type = {
+#         "x": pokemon_type,
+#         "y": total_score,
+#         "type": "bar"
+#     }
 
-    # Query for the gen1data
-    gen1results = db.session.query(Pokemon.type_1, func.avg(Pokemon.total)).\
-        filter(Pokemon.generation==1).group_by(Pokemon.type_1).all()
-    g1pokemon_type = [result[0] for result in gen1results]
-    g1total_score = [int(result[1]) for result in gen1results]
+#     # Query for the gen1data
+#     gen1results = db.session.query(Pokemon.type_1, func.avg(Pokemon.total)).\
+#         filter(Pokemon.generation==1).group_by(Pokemon.type_1).all()
+#     g1pokemon_type = [result[0] for result in gen1results]
+#     g1total_score = [int(result[1]) for result in gen1results]
 
-    g1trace_type = {
-        "x": g1pokemon_type,
-        "y": g1total_score,
-        "type": "bar",
-        "barmode": group
-    }
+#     g1trace_type = {
+#         "x": g1pokemon_type,
+#         "y": g1total_score,
+#         "type": "bar",
+#         "barmode": group
+#     }
     
-    datavariable = [trace_type, g1trace_type]
-    return jsonify(datavariable)
+#     datavariable = [trace_type, g1trace_type]
+#     return jsonify(datavariable)
 
 @app.route("/pokemon_generation")
 def pokemon_generation():
