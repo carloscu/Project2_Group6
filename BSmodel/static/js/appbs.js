@@ -20,3 +20,5 @@ function getData(route) {
     updatePlotly(data);
   });
 }
+
+

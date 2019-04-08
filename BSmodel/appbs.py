@@ -186,31 +186,27 @@ def pokemon_generation():
     }
     return jsonify(plot_trace)
 
-if __name__ == "__main__":
-    app.run()
+@app.route("/catchbytotal")
+def catchbytotal():
+    """Catch Rate by Total"""
 
-# trying to get the scatter to work
-# @app.route("/catchbytotal")
-# def catchbytotal():
-#     """Catch Rate by Total"""
+    # Query for data
+    results = db.session.query(Pokemon.catch_rate, Pokemon.total, Pokemon.name).all()
 
-#     # Query for data
-#     results = db.session.query(Pokemon.catch_rate, Pokemon.total, Pokemon.name).all()
+    pokemon_cr = [result[0] for result in results]
+    total_score = [int(result[1]) for result in results]
+    names = [result[2] for result in results]
 
-#     pokemon_cr = [result[0] for result in results]
-#     total_score = [int(result[1]) for result in results]
-#     names = [result[2] for result in results]
-
-#     # Format the data for Plotly
-#     catch_trace = {
-#         "x": pokemon_cr,
-#         "y": total_score,
-#         "labels": names,
-#         "type": "scatter",
-#         "mode": "markers"
-#     }
+    # Format the data for Plotly
+    catch_trace = {
+        "x": pokemon_cr,
+        "y": total_score,
+        "labels": names,
+        "type": "scatter",
+        "mode": "markers"
+    }
     
-#     return jsonify(catch_trace)
+    return jsonify(catch_trace)
 
 if __name__ == "__main__":
     app.run()
