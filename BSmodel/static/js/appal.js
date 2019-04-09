@@ -1,7 +1,16 @@
 var defaultURL = "/catchbytotal";
 d3.json(defaultURL).then(function(data) {
   var data = [data];
-  var layout = { margin: { t: 30, b: 100 } };
+  var layout = { 
+    title: "Pokemon Catch Rate Vs. Total Points",
+    xaxis: {title: "Catch Rate"},
+    yaxis: {title: "Total"}
+    
+
+
+    
+    };
+ 
   Plotly.plot("scatter", data, layout);
 });
 
