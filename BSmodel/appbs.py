@@ -201,7 +201,7 @@ def catchbytotal():
     catch_trace = {
         "x": pokemon_cr,
         "y": total_score,
-        "labels": names,
+        "text": names,
         "type": "scatter",
         "mode": "markers"
     }
