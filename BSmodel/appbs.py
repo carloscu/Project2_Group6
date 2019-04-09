@@ -129,8 +129,7 @@ def type_total():
     trace_type = {
         "x": pokemon_type,
         "y": total_score,
-        "type": "bar",
-        "xaxis": {title: "Pokemon Type"}
+        "type": "bar"
         
     }
     return jsonify(trace_type)
