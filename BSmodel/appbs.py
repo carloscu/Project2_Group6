@@ -71,7 +71,7 @@ def home():
 
 @app.route("/catchrate")
 def catchrate():
-    """Return emoji score and emoji char"""
+    
 
     # Query for the top 10 emoji data
     results = db.session.query(Pokemon.type_1, func.avg(Pokemon.catch_rate)).\
@@ -81,6 +81,7 @@ def catchrate():
     # Create lists from the query results
     poke_type = [result[0] for result in results]
     catch = [int(result[1]) for result in results]
+   
 
     # Generate the plot trace
     trace = {
@@ -123,12 +124,14 @@ def type_total():
     pokemon_type = [result[0] for result in results]
     total_score = [int(result[1]) for result in results]
 
+
     # Generate the plot trace
     trace_type = {
         "x": pokemon_type,
         "y": total_score,
         "type": "bar",
-        "barmode": "group"
+        "xaxis": {title: "Pokemon Type"}
+        
     }
     return jsonify(trace_type)
     
@@ -177,6 +180,7 @@ def pokemon_generation():
         group_by(Pokemon.generation).order_by(Pokemon.generation.asc()).all()
 
     df = pd.DataFrame(results, columns=['generation', 'total_score'])
+  
 
     # Format the data for Plotly
     plot_trace = {

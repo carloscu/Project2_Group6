@@ -2,7 +2,11 @@
 var defaultURL = "/type_total";
 d3.json(defaultURL).then(function(data) {
   var data = [data];
-  var layout = { margin: { t: 30, b: 100 } };
+  var layout = { margin: { t: 30, b: 100 } 
+    // title: "title_label",
+    // xaxis: {title: "x_label"},
+    // yaxis: {title: "y_label"}
+  };
   Plotly.plot("bar", data, layout);
 });
 
